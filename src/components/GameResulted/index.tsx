@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import { GameContext } from '../../contexts/GameContext';
 
-export default function Winner() {
+export default function GameResulted() {
   const { gameResult } = useContext(GameContext);
     
   if (!gameResult) return <></>;
