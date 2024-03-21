@@ -5,11 +5,11 @@ import Square from "../Square";
 import calculateWinner from "../../utils";
 import Player from "../Player";
 import Reset from "../Reset";
-import Winner from "../GameResulted";
+import GameResulted from "../GameResulted";
 
 
 export default function Board() {
-  const { squares, gameResult, setGameResult } = useContext(GameContext);
+  const { squares, setGameResult } = useContext(GameContext);
 
   useEffect(() => {
     const winner = calculateWinner({ squares });
@@ -26,7 +26,7 @@ export default function Board() {
     if (winner) {
       setGameResult(winner);
     }
-  }, [gameResult, setGameResult, squares]);
+  }, [ setGameResult, squares]);
 
 
   return (
@@ -36,7 +36,7 @@ export default function Board() {
         {squares.map((value: string, index: number) => (
             <Square value={value} index={index} />
             ))}
-        <Winner />
+        <GameResulted />
       </div>
       <Reset />
     </div>
