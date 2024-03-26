@@ -1,33 +1,37 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
-import { GameContext } from "../../contexts/GameContext";
+import { useGameContext } from "../../contexts/GameContext";
 import Square from "../Square";
-import calculateWinner from "../../utils";
+// import calculateWinner from "../../utils";
 import Player from "../Player";
 import Reset from "../Reset";
 import GameResulted from "../GameResulted";
 
 
 export default function Board() {
-  const { squares, setGameResult } = useContext(GameContext);
+  const { state } = useGameContext();
+
+  const squares = state.squares;
+
 
   useEffect(() => {
-    const winner = calculateWinner({ squares });
+    // const winner = calculateWinner({ squares });
+    console.log(squares);
+    
 
-    const isNull = (element: number) => { 
-      return (element === null); 
-   } 
+  //   const isNull = (element: number) => { 
+  //     return (element === null); 
+  //  } 
              
-   const passed = squares.filter(isNull);
+  //  const passed = squares.filter(isNull);
 
-    if (passed.length === 0 && !winner) {
-      setGameResult('draw')
-    }
-    if (winner) {
-      setGameResult(winner);
-    }
-  }, [ setGameResult, squares]);
-
+  //   if (passed.length === 0 && !winner) {
+  //     setGameResult('draw')
+  //   }
+  //   if (winner) {
+  //     setGameResult(winner);
+  //   }
+  }, [ squares]);
 
   return (
     <div className="board-container">

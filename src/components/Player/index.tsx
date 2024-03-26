@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-
-import { GameContext } from '../../contexts/GameContext';
+import { useGameContext } from '../../contexts/GameContext';
 
 
 export default function Player() {
-  const { gameResult, isXNext } = useContext(GameContext);
+  const gameResult = false;
+  const { state } = useGameContext();
+  const isXNext = state.isXNext;
 
   return (
     <div className='player'>
