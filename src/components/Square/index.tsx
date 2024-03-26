@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-
-import { GameContext } from "../../contexts/GameContext";
+import { useGameContext } from "../../contexts/GameContext";
 
 
 interface SquareProps {
@@ -11,21 +9,20 @@ interface SquareProps {
 export default function Square({ value = "", index }: SquareProps) {
     
     const {
-        squares,
-        setSquares,
-        isXNext,
-        setIsXNext,
-        gameResult
-      } = useContext(GameContext);
+        state,
+        upDateSquare,
+      } = useGameContext();
+
+      const squares = state.squares;
+      const isXNext = state.isXNext;
 
       const handleClick = () => {
         if (squares[index]) return;
-        if (gameResult) return;
+        if (state.gameResult) return;
     
         const newSquares = [...squares];
         newSquares[index] = isXNext ? 'X' : 'O';
-        setSquares(newSquares);
-        setIsXNext(!isXNext);
+        upDateSquare;
       }
 
     return (
